@@ -1,13 +1,11 @@
 const fs = require('fs');
 
 class Ticket {
-    constructor(numero, escirtorio) {
+    constructor(numero, escritorio) {
         this.numero = numero;
-        this.escirtorio = escirtorio;
+        this.escritorio = escritorio;
     }
 }
-
-
 
 class TicketControl {
     constructor() {

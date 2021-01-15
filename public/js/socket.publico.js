@@ -23,11 +23,20 @@ socket.on('disconnect', function() { //Cuando se pierde la conexión con el serv
 
 socket.on('estadoActual', function(data) {
     console.log(data);
+    actualizarHTML(data.ultimos4);
+});
+
+socket.on('ultimos4', function(data) {
+
+    var audio = new Audio('audio/new-ticket.mp3');
+    audio.play();
+
+    actualizarHTML(data.ultimos4);
 });
 
 function actualizarHTML(ultimos4) {
-    for (var i = 0; ultimos4.length - 1; i++) {
-        lblTickets[i].text('Ticket ' + ultimos4[i].numero);
-        lblEscritorios[i].text('Ticket ' + ultimos4[i].esclblEscritorios);
-    }
+    ultimos4.forEach((element, index) => {
+        $(`#lblTicket${index+1}`).text("Ticket " + element.numero);
+        $(`#lblEscritorio${index+1}`).text("Escritorio " + element.escritorio);
+    });
 }
